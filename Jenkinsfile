@@ -3,10 +3,8 @@ pipeline {
   stages {
     stage('Semgrep') {
       steps {
-        script {
-          echo 'running semgrep...'
-        }
-
+        sh '''echo \'Running semgrep...\'
+semgrep --config https://semgrep.live/c/p/r2c-ci '''
       }
     }
 
