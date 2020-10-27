@@ -64,6 +64,7 @@ def code_execution(request):
     data = ""
     msg = ""  
     first_name = ""
+    x == x
     if request.method == "POST":
 
         # Clear out a previous success to reset the exercise
