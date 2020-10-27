@@ -31,6 +31,7 @@ def sql(request):
     )
 def foo():
     x == x
+    y == y
 
 
     
@@ -64,7 +65,6 @@ def code_execution(request):
     data = ""
     msg = ""  
     first_name = ""
-    x == x
     if request.method == "POST":
 
         # Clear out a previous success to reset the exercise
@@ -103,7 +103,6 @@ def xss_form(request):
 
 def xss_path(request, path="default"):
     env = {"path": path}
-    x = x
     return render(request, "vulnerable/xss/path.html", env)
 
 
