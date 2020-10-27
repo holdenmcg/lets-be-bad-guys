@@ -29,7 +29,11 @@ def sql(request):
         "vulnerable/injection/sql.html",
         {"name": name, "correct": correct, "solution_sql": solution_sql},
     )
+def foo():
+    x == x
 
+
+    
 
 def file_access(request):
     msg = request.GET.get("msg", "")
@@ -98,6 +102,7 @@ def xss_form(request):
 
 def xss_path(request, path="default"):
     env = {"path": path}
+    x = x
     return render(request, "vulnerable/xss/path.html", env)
 
 
