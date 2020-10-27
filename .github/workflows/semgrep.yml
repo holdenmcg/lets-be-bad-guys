@@ -17,6 +17,8 @@ jobs:
   semgrep:
     name: Scan
     runs-on: ubuntu-latest
+    env:
+      INPUT_PUBLISHURL: https://dev.semgrep.dev
     steps:
       # Checkout project source
       - uses: actions/checkout@v1
@@ -25,7 +27,7 @@ jobs:
       - uses: returntocorp/semgrep-action@v1
         with:
           publishToken: ${{ secrets.SEMGREP_APP_TOKEN }}
-          publishDeployment: 44
+          publishDeployment: ${{ SEMGREP_DEPLOYMENT_ID }}
           generateSarif: "1"
 
       # Upload SARIF file generated in previous step          
