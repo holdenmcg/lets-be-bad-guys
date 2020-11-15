@@ -9,7 +9,7 @@ pipeline {
 
       }
       steps {
-        sh 'python -c "import os; os("which semgrep")";'
+        sh 'python -c \'\'\'import sh; print(sh.which("semgrep"))\'\'\''
       }
     }
 
