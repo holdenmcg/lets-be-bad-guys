@@ -1,18 +1,12 @@
 pipeline {
-  agent any
-  stages {
-    stage('build') {
-      agent {
-        docker {
-          image 'node:7-alpine'
-          args '--name docker-node'
-        }
-
-      }
-      steps {
-        echo "PATH is: $PATH"
-      }
+    agent {
+        docker { image 'node:14-alpine' }
     }
-
-  }
+    stages {
+        stage('Test') {
+            steps {
+                sh 'node --version'
+            }
+        }
+    }
 }
