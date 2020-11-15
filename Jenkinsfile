@@ -1,4 +1,5 @@
 pipeline {
+<<<<<<< HEAD
   agent none
 
   stages {
@@ -8,19 +9,20 @@ pipeline {
     //     /usr/local/bin/docker run --rm -v "${PWD}:/src" returntocorp/semgrep --config=https://semgrep.dev/p/r2c-CI'''
     //   }
     // }
+
     stage('Docker node test') {
       agent {
         docker {
-          // Set both label and image
           label 'docker'
           image 'node:7-alpine'
-          args '--name docker-node' // list any args
+          args '--name docker-node'
         }
+
       }
       steps {
-        // Steps run in node:7-alpine docker container on docker slave
         sh 'node --version'
       }
     }
+
   }
 }
