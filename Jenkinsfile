@@ -1,21 +1,13 @@
 pipeline {
-  agent {
-    label 'master' 
+  agent { label 'docker' }
+  environment {
+    PATH = "/usr/local/bin/:$PATH"
   }
-
   stages {
-    stage('Docker node test') {
-      agent {
-        docker {
-          label 'master'
-          image 'node:7-alpine'
-          args '--name docker-node'
-        }
-      }
+    stage ('build') {
       steps {
-        sh 'node --version'
+        echo "PATH is: $PATH"
       }
     }
-
   }
 }
