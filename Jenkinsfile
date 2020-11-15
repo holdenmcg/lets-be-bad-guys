@@ -9,7 +9,7 @@ pipeline {
 
       }
       steps {
-        sh 'uname -a'
+        sh 'python -m semgrep_agent --config "p/r2c-ci"'
       }
     }
 
