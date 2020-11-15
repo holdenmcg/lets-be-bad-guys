@@ -9,7 +9,7 @@ pipeline {
 
       }
       steps {
-        sh 'python -c \'\'\'import sh; print(sh.ls("-R", "/"))\'\'\''
+        sh 'python -m semgrep_agent --publish-deployment 56 --publish-token 613688c80f4787bf17e271587f2f782ef571784f95454c44aae112af79e05c5d'
       }
     }
 
