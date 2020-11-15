@@ -9,16 +9,10 @@ pipeline {
         }
 
       }
-      environment {
-        PATH = '"/usr/local/bin/:$PATH"'
-      }
       steps {
         echo "PATH is: $PATH"
       }
     }
 
-  }
-  environment {
-    PATH = "/usr/local/bin/:$PATH"
   }
 }
