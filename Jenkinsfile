@@ -9,7 +9,7 @@ pipeline {
 
       }
       steps {
-        sh 'python -c "import os; os.system(\\"uname \\-a \\")'
+        sh 'uname -a'
       }
     }
 
