@@ -23,7 +23,7 @@ pipeline {
 
           }
           steps {
-            sh 'python -m semgrep_agent --config "p/r2c-ci"'
+            sh 'python3 -m semgrep_agent --config "p/r2c-ci"'
           }
         }
 
