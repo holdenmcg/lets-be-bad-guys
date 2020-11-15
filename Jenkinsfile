@@ -1,5 +1,4 @@
 pipeline {
-<<<<<<< HEAD
   agent none
 
   stages {
