@@ -9,7 +9,7 @@ pipeline {
 
       }
       steps {
-        sh 'python -m semgrep --version'
+        sh 'python -m semgrep_agent --version'
       }
     }
 
