@@ -1,13 +1,16 @@
 pipeline {
-  agent { label 'docker' }
-  environment {
-    PATH = "/usr/local/bin/:$PATH"
+  agent {
+    label 'docker'
   }
   stages {
-    stage ('build') {
+    stage('build') {
       steps {
         echo "PATH is: $PATH"
       }
     }
+
+  }
+  environment {
+    PATH = "/usr/local/bin/:$PATH"
   }
 }
