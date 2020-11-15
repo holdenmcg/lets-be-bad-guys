@@ -9,7 +9,7 @@ pipeline {
 
       }
       steps {
-        sh 'python -m semgrep_agent --config "p/r2c-ci"'
+        sh 'which semgrep'
       }
     }
 
