@@ -1,10 +1,5 @@
 pipeline {
-  agent {
-    docker {
-      image 'returntocorp/semgrep-agent:v1'
-    }
-
-  }
+  agent any
   stages {
     stage('Semgrep') {
       agent {
