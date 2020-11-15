@@ -1,5 +1,5 @@
 pipeline {
-  agent any
+  agent none
   stages {
     stage('Semgrep') {
       agent {
@@ -9,7 +9,7 @@ pipeline {
 
       }
       steps {
-        sh 'semgrep --version'
+        sh 'semgrep_agent --version'
       }
     }
 
