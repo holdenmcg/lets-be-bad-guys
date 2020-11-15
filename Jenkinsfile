@@ -1,5 +1,5 @@
 pipeline {
-  agent none
+  agent any
   stages {
     stage('Semgrep') {
       parallel {
@@ -17,7 +17,7 @@ pipeline {
 
         stage('Stage2') {
           steps {
-            sh 'semgrep --version'
+            sh 'python -m semgrep_agent --config "p/r2c-ci"'
           }
         }
 
