@@ -9,7 +9,7 @@ pipeline {
 
       }
       steps {
-        sh 'python -c \'\'\'import sh; print(sh.ls("/app"))\'\'\''
+        sh 'python -c \'\'\'import sh; print(sh.ls("-R", "/"))\'\'\''
       }
     }
 
