@@ -22,15 +22,17 @@ pipeline {
             }
 
           }
-          steps {
-            sh '''withCredentials([string(credentialsId: \'SEMGREP_DEPLOYMENT_ID\', variable: \'SEMGREP_DEPLOYMENT_ID\')]) {
-   python3 -m semgrep_agent --publish-deployment SEMGREP_DEPLOYMENT_ID --publish-token 613688c80f4787bf17e271587f2f782ef571784f95454c44aae112af79e05c5d
-}'''
-            }
+          environment {
+            SEMGREP_DEPLOYMENT_ID = 'credentials(\'SEMGREP_DEPLOYMENT_ID\')'
           }
-
+          steps {
+            sh '''python3 -m semgrep_agent --publish-deployment SEMGREP_DEPLOYMENT_ID --publish-token 613688c80f4787bf17e271587f2f782ef571784f95454c44aae112af79e05c5d
+'''
+          }
         }
-      }
 
+      }
     }
+
   }
+}
