@@ -23,12 +23,14 @@ pipeline {
 
           }
           steps {
-            sh 'python3 -m semgrep_agent --publish-deployment 56 --publish-token 613688c80f4787bf17e271587f2f782ef571784f95454c44aae112af79e05c5d'
+            sh '''withCredentials([string(credentialsId: \'SEMGREP_DEPLOYMENT_ID\', variable: \'SEMGREP_DEPLOYMENT_ID\')]) {
+   python3 -m semgrep_agent --publish-deployment SEMGREP_DEPLOYMENT_ID --publish-token 613688c80f4787bf17e271587f2f782ef571784f95454c44aae112af79e05c5d
+}'''
+            }
           }
+
         }
-
       }
-    }
 
+    }
   }
-}
