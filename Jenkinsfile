@@ -23,11 +23,11 @@ pipeline {
 
           }
           environment {
-            SEMGREP_DEPLOYMENT_ID = 'credentials(\'SEMGREP_DEPLOYMENT_ID\')'
+            SEMGREP_DEPLOYMENT_ID = credentials('SEMGREP_DEPLOYMENT_ID')
+            SEMGREP_APP_TOKEN = credentials('SEMGREP_APP_TOKEN')
           }
           steps {
-            sh '''python3 -m semgrep_agent --publish-deployment SEMGREP_DEPLOYMENT_ID --publish-token 613688c80f4787bf17e271587f2f782ef571784f95454c44aae112af79e05c5d
-'''
+            sh 'python3 -m semgrep_agent --publish-deployment $SEMGREP_DEPLOYMENT_ID --publish-token $SEMGREP_APP_TOKEN'
           }
         }
 
