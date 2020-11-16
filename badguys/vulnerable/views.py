@@ -33,6 +33,7 @@ def sql(request):
 
 def foo():
     x == x
+    y == y
 
 
 def file_access(request):
@@ -103,7 +104,6 @@ def xss_form(request):
 
 def xss_path(request, path="default"):
     env = {"path": path}
-    x = x
     return render(request, "vulnerable/xss/path.html", env)
 
 
