@@ -1,0 +1,148 @@
+{
+  "check_id": "python.django.security.audit.csrf-exempt.no-csrf-exempt",
+  "path": "badguys/vulnerable/views.py",
+  "start": {
+    "line": 157,
+    "col": 1
+  },
+  "end": {
+    "line": 160,
+    "col": 62
+  },
+  "extra": {
+    "message": "There is rarely a good reason to use @csrf_exempt as is used for `csrf_image`.",
+    "metavars": {
+      "$R": {
+        "start": {
+          "line": 158,
+          "col": 5,
+          "offset": 3974
+        },
+        "end": {
+          "line": 158,
+          "col": 15,
+          "offset": 3984
+        },
+        "abstract_content": "csrf_image",
+        "unique_id": {
+          "type": "AST",
+          "md5sum": "4b89acd1487b84cd4e58485349ed1c0f"
+        }
+      }
+    },
+    "metadata": {
+      "cwe": "CWE-352: Cross-Site Request Forgery (CSRF)",
+      "owasp": "A6: Security Misconfiguration"
+    },
+    "severity": "WARNING",
+    "lines": "@csrf_exempt\n\ndef csrf_image(request):\n\n    env = {\"qs\": request.GET.get(\"qs\", \"\")}\n\n    return render(request, \"vulnerable/csrf/image.html\", env)"
+  }
+}
+{
+  "check_id": "python.django.security.audit.secure-cookies.django-secure-set-cookie",
+  "path": "badguys/vulnerable/views.py",
+  "start": {
+    "line": 95,
+    "col": 5
+  },
+  "end": {
+    "line": 95,
+    "col": 64
+  },
+  "extra": {
+    "message": "Django cookies should be handled securely by setting secure=True, httponly=True, and samesite='Lax' in\nresponse.set_cookie(...). If your situation calls for different settings, explicitly disable the setting.\nIf you want to send the cookie over http, set secure=False.  If you want to let client-side JavaScript\nread the cookie, set httponly=False. If you want to attach cookies to requests for external sites,\nset samesite=None.\n",
+    "metavars": {},
+    "metadata": {
+      "cwe": "CWE-614: Sensitive Cookie in HTTPS Session Without 'Secure' Attribute",
+      "owasp": "A3: Sensitive Data Exposure",
+      "references": [
+        "https://docs.djangoproject.com/en/3.0/ref/request-response/#django.http.HttpResponse.set_cookie",
+        "https://blog.r2c.dev/2020/bento-check-keeping-cookies-safe-in-flask/",
+        "https://bento.dev/checks/flask/secure-set-cookie/"
+      ]
+    },
+    "severity": "WARNING",
+    "lines": "    response.set_cookie(key=\"monster\", value=\"omnomnomnomnom!\")"
+  }
+}
+{
+  "check_id": "python.django.security.injection.code.globals-misuse-code-execution.globals-misuse-code-execution",
+  "path": "badguys/vulnerable/views.py",
+  "start": {
+    "line": 176,
+    "col": 5
+  },
+  "end": {
+    "line": 180,
+    "col": 33
+  },
+  "extra": {
+    "message": "Found request data as an index to 'globals()'. This is extremely\ndangerous because it allows an attacker to execute arbirary code\non the system. Refactor your code not to use 'globals()'.\n",
+    "metavars": {
+      "$INTERM": {
+        "start": {
+          "line": 177,
+          "col": 5,
+          "offset": 4392
+        },
+        "end": {
+          "line": 177,
+          "col": 13,
+          "offset": 4400
+        },
+        "abstract_content": "function",
+        "unique_id": {
+          "type": "id",
+          "value": "function",
+          "kind": "Local",
+          "sid": 46
+        }
+      },
+      "$W": {
+        "start": {
+          "line": 176,
+          "col": 23,
+          "offset": 4373
+        },
+        "end": {
+          "line": 176,
+          "col": 26,
+          "offset": 4376
+        },
+        "abstract_content": "GET",
+        "unique_id": {
+          "type": "AST",
+          "md5sum": "e25882311ba358085df6337c8f8a97de"
+        }
+      },
+      "$DATA": {
+        "start": {
+          "line": 176,
+          "col": 5,
+          "offset": 4355
+        },
+        "end": {
+          "line": 176,
+          "col": 12,
+          "offset": 4362
+        },
+        "abstract_content": "forward",
+        "unique_id": {
+          "type": "id",
+          "value": "forward",
+          "kind": "Local",
+          "sid": 45
+        }
+      }
+    },
+    "metadata": {
+      "cwe": "CWE-96: Improper Neutralization of Directives in Statically Saved Code ('Static Code Injection')",
+      "owasp": "A1: Injection",
+      "references": [
+        "https://github.com/mpirnat/lets-be-bad-guys/blob/d92768fb3ade32956abd53bd6bb06e19d634a084/badguys/vulnerable/views.py#L181-L186"
+      ]
+    },
+    "severity": "WARNING",
+    "lines": "    forward = request.GET.get(\"fwd\")\n\n    function = globals().get(forward)\n\n\n\n    if function:\n\n        return function(request)"
+  }
+}

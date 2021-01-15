@@ -8,7 +8,7 @@ from django.shortcuts import redirect, render
 from django.views.decorators.csrf import csrf_exempt
 
 
-## 01 - Injection Attacks
+# 01 - Injection Attacks
 
 
 def norm(s):
@@ -29,21 +29,23 @@ def sql(request):
         "vulnerable/injection/sql.html",
         {"name": name, "correct": correct, "solution_sql": solution_sql},
     )
+
+
 def foo():
     x == x
+    y == y
 
-
-    
 
 def file_access(request):
     msg = request.GET.get("msg", "")
     return render(request, "vulnerable/injection/file_access.html", {"msg": msg})
-   
+
 
 def user_pic(request):
     """A view that is vulnerable to malicious file access."""
 
-    base_path = os.path.join(os.path.dirname(__file__), "../../badguys/static/images")
+    base_path = os.path.join(os.path.dirname(
+        __file__), "../../badguys/static/images")
     filename = request.GET.get("p")
 
     try:
@@ -62,10 +64,8 @@ def user_pic(request):
 
 def code_execution(request):
     data = ""
-    msg = ""  
+    msg = ""
     first_name = ""
-    x == x
-    y == y
     if request.method == "POST":
 
         # Clear out a previous success to reset the exercise
@@ -80,19 +80,19 @@ def code_execution(request):
         try:
             data = open("p0wned.txt").read()
         except IOError:
-            data = ""  
+            data = ""
 
     return render(
         request,
         "vulnerable/injection/code_execution.html",
         {"first_name": request.POST.get("first_name", ""), "data": data},
-    )    
+    )
 
 
-## 02 - Broken Authentication & Session Management
+# 02 - Broken Authentication & Session Management
 
 
-## 03 - XSS
+# 03 - XSS
 
 
 def xss_form(request):
@@ -104,7 +104,6 @@ def xss_form(request):
 
 def xss_path(request, path="default"):
     env = {"path": path}
-    x = x
     return render(request, "vulnerable/xss/path.html", env)
 
 
@@ -113,10 +112,10 @@ def xss_query(request):
     return render(request, "vulnerable/xss/query.html", env)
 
 
-## 04 - Insecure Direct Object References
+# 04 - Insecure Direct Object References
 users = {
-    "1": {"name": "Foo", "email": "foo@example.com", "admin": False,},
-    "2": {"name": "Bar", "email": "bar@example.com", "admin": True,},  
+    "1": {"name": "Foo", "email": "foo@example.com", "admin": False, },
+    "2": {"name": "Bar", "email": "bar@example.com", "admin": True, },
 }
 
 
@@ -132,20 +131,20 @@ def dor_user_profile(request, userid=None):
     env["user_id"] = userid
     return render(request, "vulnerable/direct_object_references/profile.html", env)
 
- 
-## 05 - Security Misconfiguration
+
+# 05 - Security Misconfiguration
 def boom(request):
     raise Exception("boom")
 
 
-## 06 - Sensitive Data Exposure
+# 06 - Sensitive Data Exposure
 
 
 def exposure_login(request):
     return redirect("exposure")
 
 
-## 07 - Missing Function Level Access Control
+# 07 - Missing Function Level Access Control
 
 
 def missing_access_control(request):
@@ -155,7 +154,7 @@ def missing_access_control(request):
     return render(request, "vulnerable/access_control/non_admin.html", env)
 
 
-## 08 - CSRF
+# 08 - CSRF
 
 
 @csrf_exempt
@@ -164,11 +163,11 @@ def csrf_image(request):
     return render(request, "vulnerable/csrf/image.html", env)
 
 
-## 09 - Using Known Vulnerable Components
+# 09 - Using Known Vulnerable Components
 # No exercise, just discussion?
 
 
-## 10 - Unvalidated Redirects & Forwards
+# 10 - Unvalidated Redirects & Forwards
 
 
 def unvalidated_redirect(request):
@@ -189,4 +188,3 @@ def unvalidated_forward(request):
 
 def admin(request):
     return render(request, "vulnerable/redirects/admin.html", {})
-
