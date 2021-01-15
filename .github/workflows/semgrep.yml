@@ -17,17 +17,18 @@ jobs:
   semgrep:
     name: Scan
     runs-on: ubuntu-latest
-    env:
-      INPUT_PUBLISHURL: https://dev.semgrep.dev
     steps:
       # Checkout project source
       - uses: actions/checkout@v1
       
       # Scan code using project's configuration on https://semgrep.dev/manage
       - uses: returntocorp/semgrep-action@v1
+        # Set GITHUB_TOKEN to leave inline comments on your pull requests.
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           publishToken: ${{ secrets.SEMGREP_APP_TOKEN }}
-          publishDeployment: ${{ SEMGREP_DEPLOYMENT_ID }}
+          publishDeployment: ${{ secrets.SEMGREP_DEPLOYMENT_ID }}
           generateSarif: "1"
 
       # Upload SARIF file generated in previous step          
