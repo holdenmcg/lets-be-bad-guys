@@ -6,7 +6,7 @@ pipeline {
 
   }
   stages {
-    stage('Semgrep python') {
+    stage('Test') {
       agent {
         node {
           label 'master'
@@ -18,8 +18,7 @@ pipeline {
         SEMGREP_APP_TOKEN = credentials('SEMGREP_APP_TOKEN')
       }
       steps {
-        sh '''echo \'Running semgrep...\'
-/usr/local/bin/docker run --rm -v "${PWD}:/src" returntocorp/semgrep --config=https://semgrep.dev/p/r2c-CI'''
+        sh 'echo "hello"'
       }
     }
 
