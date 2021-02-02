@@ -6,7 +6,7 @@ pipeline {
 
   }
   stages {
-    stage('Test') {
+    stage('Semgrep-agent') {
       agent {
         node {
           label 'master'
@@ -18,7 +18,7 @@ pipeline {
         SEMGREP_APP_TOKEN = credentials('SEMGREP_APP_TOKEN')
       }
       steps {
-        sh 'python -m semgrep_agent'
+        sh 'python -m semgrep_agent --publish-deployment $SEMGREP_DEPLOYMENT_ID --publish-token $SEMGREP_APP_TOKEN'
       }
     }
 
