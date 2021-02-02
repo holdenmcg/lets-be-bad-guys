@@ -13,7 +13,7 @@ pipeline {
         SEMGREP_APP_TOKEN = credentials('SEMGREP_APP_TOKEN')
       }
       steps {
-        sh 'echo $SEMGREP_DEPLOYMENT_ID'
+        sh 'echo $SEMGREP_DEPLOYMENT_ID1'
       }
     }
 
