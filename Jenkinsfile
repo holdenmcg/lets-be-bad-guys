@@ -1,5 +1,10 @@
 pipeline {
-  agent none
+  agent {
+    docker {
+      image 'returntocorp/semgrep-agent:v1'
+    }
+
+  }
   stages {
     stage('Test') {
       agent {
@@ -13,7 +18,7 @@ pipeline {
         SEMGREP_APP_TOKEN = credentials('SEMGREP_APP_TOKEN')
       }
       steps {
-        sh 'echo $SEMGREP_DEPLOYMENT_ID1'
+        sh 'python -m semgrep_agent'
       }
     }
 
