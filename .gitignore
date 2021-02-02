@@ -4,3 +4,4 @@
 local_settings.py
 badguys/static/js/vendor/
 .vscode/
+workspace.code-workspace
