@@ -2,6 +2,7 @@ pipeline {
   agent {
     docker {
       image 'returntocorp/semgrep-agent:v1'
+      args '-u 0'
     }
 
   }
