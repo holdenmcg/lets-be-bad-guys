@@ -9,7 +9,7 @@ pipeline {
   stages {
     stage('Semgrep-agent') {
       steps {
-        sh 'cd /app; python -m semgrep_agent'
+        sh 'python -m semgrep_agent'
       }
     }
 
