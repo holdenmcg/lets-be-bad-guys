@@ -12,7 +12,7 @@ pipeline {
   environment {
     SEMGREP_APP_TOKEN     = credentials('SEMGREP_APP_TOKEN')
     SEMGREP_DEPLOYMENT_ID = credentials('SEMGREP_DEPLOYMENT_ID')
-    SEMGREP_REPO_URL = echo scm.getUserRemoteConfigs()[0].getUrl()
+    SEMGREP_REPO_URL = scm.getUserRemoteConfigs()[0].getUrl()
     SEMGREP_BRANCH =  scm.GIT_BRANCH
   }
 
