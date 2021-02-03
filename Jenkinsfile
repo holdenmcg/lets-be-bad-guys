@@ -1,12 +1,16 @@
 pipeline {
-    agent {
-        docker { image 'node:14-alpine' }
+  agent {
+    docker {
+      image 'returntocorp/semgrep-agent:v1'
     }
-    stages {
-        stage('Test') {
-            steps {
-                sh 'node --version'
-            }
-        }
+
+  }
+  stages {
+    stage('Semgrep-agent') {
+      steps {
+        sh 'python -m semgrep_agent '
+      }
     }
+
+  }
 }
