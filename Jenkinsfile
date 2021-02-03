@@ -11,7 +11,8 @@ pipeline {
     SEMGREP_APP_TOKEN     = credentials('SEMGREP_APP_TOKEN')
     SEMGREP_DEPLOYMENT_ID = credentials('SEMGREP_DEPLOYMENT_ID')
     // environment variables for semgrep_agent (for findings / analytics page)
-    SEMGREP_REPO_URL = "${GIT_URL}"
+    //SEMGREP_REPO_URL = "${GIT_URL}"
+    SEMGREP_REPO_URL = env.GIT_URL.replaceFirst('.git','')
     SEMGREP_BRANCH = "${GIT_BRANCH}"
     SEMGREP_JOB_URL = "${BUILD_URL}"
     // https://stackoverflow.com/a/55500013/459909
@@ -21,7 +22,7 @@ pipeline {
   stages {
     stage('Semgrep_agent') {
       steps{
-        sh 'echo $SEMGREP_REPO_NAME; python -m semgrep_agent --publish-token $SEMGREP_APP_TOKEN --publish-deployment $SEMGREP_DEPLOYMENT_ID'
+        sh 'echo $SEMGREP_REPO_URL; python -m semgrep_agent --publish-token $SEMGREP_APP_TOKEN --publish-deployment $SEMGREP_DEPLOYMENT_ID'
       }
    }
   }
