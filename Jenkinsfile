@@ -14,4 +14,7 @@ pipeline {
     }
 
   }
+  environment {
+    SEMGREP_DEPLOYMENT_ID = 'credentials(\'SEMGREP_DEPLOYMENT_ID\')'
+  }
 }
