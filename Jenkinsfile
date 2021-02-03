@@ -14,10 +14,10 @@ pipeline {
     //SEMGREP_REPO_URL = "${GIT_URL}"
     SEMGREP_REPO_URL = env.GIT_URL.replaceFirst(/^(.*).git$/,'$1')
     SEMGREP_BRANCH = "${GIT_BRANCH}"
-    SEMGREP_JOB_URL = "${BUILD_URL}"
+    // SEMGREP_JOB_URL = "${BUILD_URL}"
     // https://stackoverflow.com/a/55500013/459909
-    // SEMGREP_REPO_NAME = env.GIT_URL.replaceFirst(/^.*\/([^\/]+?).git$/, '$1')
-    SEMGREP_REPO_NAME = 'daghan/lets-be-bad-guys'
+    SEMGREP_REPO_NAME = env.GIT_URL.replaceFirst(/^.*\/([^\/]+?).git$/, '$1')
+    SEMGREP_JOB_URL = 'daghan/lets-be-bad-guys'
   }
 
   stages {
