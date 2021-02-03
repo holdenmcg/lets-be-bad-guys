@@ -37,9 +37,6 @@ pipeline {
   stages {
     stage('debug'){
       steps{
-        dir('../test'){
-          sh "pwd"
-        }
         script{
           showSystemVariables()
         }
