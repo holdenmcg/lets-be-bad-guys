@@ -20,7 +20,9 @@ pipeline {
 
     stage('Prepare'){
       steps{
-        SEMGREP_BRANCH =  scm.GIT_BRANCH
+        script{
+          SEMGREP_BRANCH =  scm.GIT_BRANCH
+        }
       }
     }
 
