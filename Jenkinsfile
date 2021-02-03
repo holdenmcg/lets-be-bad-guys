@@ -4,7 +4,6 @@ pipeline {
       image 'returntocorp/semgrep-agent:v1'
       args '-u root'
     }
-
   }
 
   environment {
@@ -17,8 +16,6 @@ pipeline {
     SEMGREP_JOB_URL = "${BUILD_URL}"
     // https://stackoverflow.com/a/55500013/459909
     SEMGREP_REPO_NAME = env.GIT_URL.replaceFirst(/^.*\/([^\/]+?).git$/, '$1')
-   
-
   }
 
   stages {
