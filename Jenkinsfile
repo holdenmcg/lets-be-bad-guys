@@ -30,7 +30,7 @@ pipeline {
     // // SEMGREP_REPO_NAME = env.GIT_URL.replaceFirst(/^.*\/([^\/]+?).git$/, '$1')
     // SEMGREP_REPO_NAME = 'foo'
     // SEMGREP_JOB_URL = 'daghan/lets-be-bad-guys'
-    // WORKSPACE = 'daghan/lets-be-bad-guys'
+    WORKSPACE = 'fixing_jenkins_envs'
     // WORKSPACE_TMP = 'daghan/lets-be-bad-guys'
   }
 
