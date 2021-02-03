@@ -6,9 +6,9 @@ pipeline {
 
   }
   stages {
-    stage('Semgrep') {
+    stage('Semgrep_agent') {
       steps {
-        sh 'python -m semgrep-agent --publish-token $SEMGREP_APP_TOKEN'
+        sh 'python -m semgrep_agent --publish-token $SEMGREP_APP_TOKEN'
       }
     }
 
