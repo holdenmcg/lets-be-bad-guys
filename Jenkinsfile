@@ -8,7 +8,7 @@ pipeline {
   stages {
     stage('Semgrep-agent') {
       steps {
-        sh 'semgrep --version '
+        sh '/root/.local/bin/semgrep --version '
       }
     }
 
