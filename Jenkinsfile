@@ -16,18 +16,17 @@ pipeline {
   }
 
   stages {
-    
-  //   stage('Prepare'){
-  //     steps{
-  //       echo scm.getUserRemoteConfigs()[0].getUrl()
-  //       echo scm.GIT_BRANCH
-  //     }
-  //   }
+
+    stage('Prepare'){
+      steps{
+        echo scm.getUserRemoteConfigs()[0].getUrl()
+        echo scm.GIT_BRANCH
+      }
+    }
 
     stage('Semgrep_agent') {
       steps {
-        echo $SEMGREP_REPO_URL
-        sh 'python -m semgrep_agent --publish-token $SEMGREP_APP_TOKEN --publish-deployment $SEMGREP_DEPLOYMENT_ID'
+        sh 'echo $SEMGREP_REPO_URL; python -m semgrep_agent --publish-token $SEMGREP_APP_TOKEN --publish-deployment $SEMGREP_DEPLOYMENT_ID'
      }
    }
   }
