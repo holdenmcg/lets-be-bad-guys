@@ -12,9 +12,8 @@ pipeline {
     SEMGREP_DEPLOYMENT_ID = credentials('SEMGREP_DEPLOYMENT_ID')
   }
 
-
+  def allBranches = scm.branches
   
-
   stages {
     stage('Semgrep_agent') {
       steps {
