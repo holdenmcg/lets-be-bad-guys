@@ -6,10 +6,18 @@ pipeline {
     }
 
   }
+
+  environment {
+    SEMGREP_APP_TOKEN     = credentials('SEMGREP_APP_TOKEN')
+    SEMGREP_DEPLOYMENT_ID = credentials('SEMGREP_DEPLOYMENT_ID')
+  }
+
   stages {
     stage('Semgrep_agent') {
       steps {
-        sh 'python -m semgrep_agent --publish-token $SEMGREP_APP_TOKEN'
+        sh 'python -m semgrep_agent --publish-token $SEMGREP_APP_TOKEN --publish-deployment $SEMGREP_DEPLOYMENT_ID'
+     }
+   }'
       }
     }
 
