@@ -8,7 +8,7 @@ pipeline {
   stages {
     stage('Semgrep-agent') {
       steps {
-        sh 'python -m semgrep_agent '
+        sh 'cat /etc/alpine-release'
       }
     }
 
