@@ -13,6 +13,7 @@ pipeline {
     SEMGREP_APP_TOKEN     = credentials('SEMGREP_APP_TOKEN')
     SEMGREP_DEPLOYMENT_ID = credentials('SEMGREP_DEPLOYMENT_ID')
     SEMGREP_REPO_URL = echo scm.getUserRemoteConfigs()[0].getUrl()
+    SEMGREP_BRANCH =  scm.GIT_BRANCH
   }
 
   stages {
@@ -25,6 +26,7 @@ pipeline {
 
     stage('Semgrep_agent') {
       steps {
+        echo $SEMGREP_BRANCH
         sh 'python -m semgrep_agent --publish-token $SEMGREP_APP_TOKEN --publish-deployment $SEMGREP_DEPLOYMENT_ID'
      }
    }
@@ -35,3 +37,5 @@ pipeline {
 // $ SEMGREP_REPO_URL=https://gitwebsite.com/myrepository
 // $ SEMGREP_BRANCH=mybranch
 // $ SEMGREP_REPO_NAME=myorg/myrepository
+// From: https://stackoverflow.com/questions/39589360/how-to-access-git-branch-name-from-pipeline-job/48567672
+// @RicardoStuven You need to authorize that method signature in the scripts console. – Oscar Bolaños Jul 8 '19 at 21:44
