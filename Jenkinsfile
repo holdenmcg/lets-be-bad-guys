@@ -15,7 +15,8 @@ pipeline {
     SEMGREP_REPO_URL = scm.getUserRemoteConfigs()[0].getUrl()
   }
 
-  // stages {
+  stages {
+    
   //   stage('Prepare'){
   //     steps{
   //       echo scm.getUserRemoteConfigs()[0].getUrl()
