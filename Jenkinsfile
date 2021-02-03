@@ -17,8 +17,7 @@ pipeline {
   stages {
     stage('Prepare'){
       steps{
-        scmInfo = checkout scm
-        echo scm.GIT_COMMIT
+        checkout scm
       }
     }
 
