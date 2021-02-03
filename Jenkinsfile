@@ -7,7 +7,7 @@ pipeline {
   }
 
   stages {
-    stage('Semgrep') {
+    stage('Semgrep-agent') {
       environment {
         SEMGREP_APP_TOKEN     = credentials('SEMGREP_APP_TOKEN')
         SEMGREP_DEPLOYMENT_ID = credentials('SEMGREP_DEPLOYMENT_ID')
