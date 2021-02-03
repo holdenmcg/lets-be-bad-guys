@@ -31,10 +31,6 @@ def sql(request):
     )
 
 
-def foo():
-    x == x
-
-
 def file_access(request):
     msg = request.GET.get("msg", "")
     return render(request, "vulnerable/injection/file_access.html", {"msg": msg})
