@@ -18,8 +18,7 @@ pipeline {
     SEMGREP_REPO_URL = "${GIT_URL}"
     // $ SEMGREP_REPO_NAME=myorg/myrepository
     SEMGREP_BRANCH = "${GIT_BRANCH}"
-    
-    env.GIT_REPO_NAME = env.GIT_URL.replaceFirst(/^.*\/([^\/]+?).git$/, '$1')
+    SEMGREP_REPO_NAME = env.GIT_URL.replaceFirst(/^.*\/([^\/]+?).git$/, '$1')
 
   }
 
