@@ -21,6 +21,7 @@ def foo():
     e == e
     f == f
     g == g
+    h == h
 
 
 def norm(s):
