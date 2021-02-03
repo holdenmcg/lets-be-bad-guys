@@ -1,4 +1,4 @@
-def scmInfo
+def allBranches = scm.branches
 
 pipeline {
   agent {
@@ -17,7 +17,7 @@ pipeline {
   stages {
     stage('Prepare'){
       steps{
-        echo scm.getUserRemoteConfigs()[0]
+        echo allBranches
       }
     }
 
