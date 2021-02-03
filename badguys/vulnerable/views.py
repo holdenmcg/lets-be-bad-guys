@@ -18,6 +18,7 @@ def foo():
     b == b
     c == c
     d == d
+    e == e
 
 
 def norm(s):

@@ -30,6 +30,7 @@ pipeline {
     SEMGREP_REPO_NAME = 'foo'
     SEMGREP_JOB_URL = 'daghan/lets-be-bad-guys'
     WORKSPACE = 'daghan/lets-be-bad-guys'
+    WORKSPACE_TMP = 'daghan/lets-be-bad-guys'
   }
 
   stages {
