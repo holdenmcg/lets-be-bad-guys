@@ -1,28 +1,12 @@
 pipeline {
-  agent {
-    docker {
-      image 'returntocorp/semgrep-agent:v1'
-      args '-u root'
+    agent {
+        docker { image 'node:14-alpine' }
     }
-
-  }
-  stages {
-    stage('Semgrep-agent') {
-      environment {
-        SEMGREP_DEPLOYMENT_ID = credentials('SEMGREP_DEPLOYMENT_ID')
-        SEMGREP_APP_TOKEN = credentials('SEMGREP_APP_TOKEN')
-      }
-
-      agent {
-        node {
-          label 'master'
+    stages {
+        stage('Test') {
+            steps {
+                sh 'node --version'
+            }
         }
-
-      }
-      steps {
-        sh 'python -m semgrep_agent --publish-deployment $SEMGREP_DEPLOYMENT_ID --publish-token $SEMGREP_APP_TOKEN'
-      }
     }
-
-  }
 }
