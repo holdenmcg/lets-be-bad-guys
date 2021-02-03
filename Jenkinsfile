@@ -13,7 +13,7 @@ pipeline {
     SEMGREP_APP_TOKEN     = credentials('SEMGREP_APP_TOKEN')
     SEMGREP_DEPLOYMENT_ID = credentials('SEMGREP_DEPLOYMENT_ID')
     SEMGREP_REPO_URL = scm.getUserRemoteConfigs()[0].getUrl()
-    SEMGREP_BRANCH = scm.GIT_BRANCH
+    SEMGREP_BRANCH = ''
   }
 
   stages {
@@ -26,7 +26,8 @@ pipeline {
     // }
 
     stage('Semgrep_agent') {
-      steps {
+      steps { 
+        SEMGREP_BRANCH = scm.GIT_BRANCH
         sh 'echo $SEMGREP_REPO_URL; python -m semgrep_agent --publish-token $SEMGREP_APP_TOKEN --publish-deployment $SEMGREP_DEPLOYMENT_ID'
      }
    }
