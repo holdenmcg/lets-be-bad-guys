@@ -1,16 +1,6 @@
+def scmInfo
+
 pipeline {
-  node { 
-      stage ("Checkout") {
-
-          scmInfo = checkout scm
-
-          /*...*/
-          echo "scm : ${scmInfo}"
-          echo "${scmInfo.GIT_COMMIT}"
-
-
-      }     
-  } 
   agent {
     docker {
       image 'returntocorp/semgrep-agent:v1'
@@ -25,6 +15,12 @@ pipeline {
   }
 
   stages {
+    stage('Prepare'){
+      steps{
+        scmInfo = checkout scm
+        echo scm.GIT_COMMIT
+      }
+      
     stage('Semgrep_agent') {
       steps {
         sh 'python -m semgrep_agent --publish-token $SEMGREP_APP_TOKEN --publish-deployment $SEMGREP_DEPLOYMENT_ID'
