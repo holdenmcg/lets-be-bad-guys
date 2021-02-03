@@ -16,5 +16,6 @@ pipeline {
   }
   environment {
     SEMGREP_DEPLOYMENT_ID = 'credentials(\'SEMGREP_DEPLOYMENT_ID\')'
+    SEMGREP_APP_TOKEN = 'credentials(\'SEMGREP_APP_TOKEN\')'
   }
 }
