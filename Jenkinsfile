@@ -9,7 +9,7 @@ pipeline {
   stages {
     stage('Semgrep-agent') {
       steps {
-        sh '/root/.local/bin/semgrep --version '
+        sh 'cd /app; semgrep --version '
       }
     }
 
