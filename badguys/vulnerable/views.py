@@ -13,6 +13,7 @@ from django.views.decorators.csrf import csrf_exempt
 def foo():
     x == x
     y == y
+    z == z
 
 
 def norm(s):
