@@ -8,7 +8,7 @@ pipeline {
   stages {
     stage('Semgrep-agent') {
       steps {
-        sh 'echo $PWD; echo /etc/alpine-release'
+        sh 'echo $PWD; cat /etc/alpine-release'
       }
     }
 
