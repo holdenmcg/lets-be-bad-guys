@@ -37,15 +37,13 @@ pipeline {
   stages {
     stage('debug'){
       steps{
+        dir('test')
         script{
           showSystemVariables()
         }
-      }
-      steps{
-        dir('test')
-      }
+      } 
     }
-    
+
     stage('Semgrep_agent') {
       steps{
         sh '''
