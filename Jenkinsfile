@@ -12,9 +12,15 @@ pipeline {
     SEMGREP_DEPLOYMENT_ID = credentials('SEMGREP_DEPLOYMENT_ID')
   }
 
-  def allBranches = scm.branches
+
   
   stages {
+    stage('Checkout') {
+      steps{
+        def scmVars = checkout scm
+        echo 'scm : the commit id is ' + scmVars.GIT_COMMIT
+      }
+    }
     stage('Semgrep_agent') {
       steps {
         sh 'python -m semgrep_agent --publish-token $SEMGREP_APP_TOKEN --publish-deployment $SEMGREP_DEPLOYMENT_ID'
