@@ -1,3 +1,13 @@
+def showSystemVariables(){    
+   if(isUnix()){
+     sh 'env'
+   } else {
+     bat 'set'
+   }
+}
+
+
+
 pipeline {
   agent {
     docker {
@@ -24,7 +34,9 @@ pipeline {
   stages {
     stage('debug'){
       steps{
-        echo env
+        script{
+          showSystemVariables()
+        }
       }
     }
     stage('Semgrep_agent') {
