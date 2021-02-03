@@ -12,12 +12,14 @@ pipeline {
   environment {
     SEMGREP_APP_TOKEN     = credentials('SEMGREP_APP_TOKEN')
     SEMGREP_DEPLOYMENT_ID = credentials('SEMGREP_DEPLOYMENT_ID')
+    SEMGREP_REPO_URL = echo scm.getUserRemoteConfigs()[0].getUrl()
   }
 
   stages {
     stage('Prepare'){
       steps{
         echo scm.getUserRemoteConfigs()[0].getUrl()
+        echo scm.GIT_BRANCH
       }
     }
 
