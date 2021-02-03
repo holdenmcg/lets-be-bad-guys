@@ -41,7 +41,11 @@ pipeline {
           showSystemVariables()
         }
       }
+      steps{
+        dir('test')
+      }
     }
+    
     stage('Semgrep_agent') {
       steps{
         sh '''
