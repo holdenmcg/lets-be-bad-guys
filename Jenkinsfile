@@ -8,8 +8,10 @@ pipeline {
   }
 
   environment {
+    // secrets for Semgrep org ID and auth token
     SEMGREP_APP_TOKEN     = credentials('SEMGREP_APP_TOKEN')
     SEMGREP_DEPLOYMENT_ID = credentials('SEMGREP_DEPLOYMENT_ID')
+    // environment variables for semgrep_agent (for findings / analytics page)
     SEMGREP_REPO_URL = "${GIT_URL}"
     SEMGREP_BRANCH = "${GIT_BRANCH}"
     SEMGREP_JOB_URL = "${BUILD_URL}"
@@ -20,15 +22,6 @@ pipeline {
   }
 
   stages {
-
-    // stage('Prepare'){
-    //   steps{
-    //     script{
-    //       SEMGREP_BRANCH =  scm.GIT_BRANCH
-    //     }
-    //   }
-    // }
-
     stage('Semgrep_agent') {
       steps{
         // sh '''
