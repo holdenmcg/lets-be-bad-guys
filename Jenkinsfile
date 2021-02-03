@@ -1,4 +1,6 @@
-def scmInfo = scm
+def branchName(){
+  return scm.GIT_BRANCH
+}
 
 pipeline {
   agent {
@@ -13,22 +15,21 @@ pipeline {
     SEMGREP_APP_TOKEN     = credentials('SEMGREP_APP_TOKEN')
     SEMGREP_DEPLOYMENT_ID = credentials('SEMGREP_DEPLOYMENT_ID')
     SEMGREP_REPO_URL = scm.getUserRemoteConfigs()[0].getUrl()
-    SEMGREP_BRANCH = ''
+    SEMGREP_BRANCH = branchName()
   }
 
   stages {
 
-    stage('Prepare'){
-      steps{
-        script{
-          SEMGREP_BRANCH =  scm.GIT_BRANCH
-        }
-      }
-    }
+    // stage('Prepare'){
+    //   steps{
+    //     script{
+    //       SEMGREP_BRANCH =  scm.GIT_BRANCH
+    //     }
+    //   }
+    // }
 
     stage('Semgrep_agent') {
       steps{
-        SEMGREP_BRANCH =  scm.GIT_BRANCH
         sh 'echo $SEMGREP_BRANCH; python -m semgrep_agent --publish-token $SEMGREP_APP_TOKEN --publish-deployment $SEMGREP_DEPLOYMENT_ID'
       }
    }
