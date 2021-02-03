@@ -1,17 +1,4 @@
 pipeline {
-  agent {
-    docker {
-      image 'returntocorp/semgrep-agent:v1'
-      args '-u root'
-    }
-
-  }
-
-  environment {
-    SEMGREP_APP_TOKEN     = credentials('SEMGREP_APP_TOKEN')
-    SEMGREP_DEPLOYMENT_ID = credentials('SEMGREP_DEPLOYMENT_ID')
-  }
-
   node { 
       stage ("Checkout") {
 
@@ -24,6 +11,18 @@ pipeline {
 
       }     
   } 
+  agent {
+    docker {
+      image 'returntocorp/semgrep-agent:v1'
+      args '-u root'
+    }
+
+  }
+
+  environment {
+    SEMGREP_APP_TOKEN     = credentials('SEMGREP_APP_TOKEN')
+    SEMGREP_DEPLOYMENT_ID = credentials('SEMGREP_DEPLOYMENT_ID')
+  }
 
   stages {
     stage('Semgrep_agent') {
