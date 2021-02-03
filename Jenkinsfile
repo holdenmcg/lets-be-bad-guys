@@ -17,7 +17,7 @@ pipeline {
   stages {
     stage('Prepare'){
       steps{
-        echo scm.userRemoteConfigs.url
+        echo scm.userRemoteConfigs()
       }
     }
 
