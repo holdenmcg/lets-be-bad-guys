@@ -22,7 +22,13 @@ pipeline {
   stages {
     stage('Semgrep_agent') {
       steps{
-        sh 'echo $SEMGREP_BRANCH; echo $SEMGREP_REPO_NAME; python -m semgrep_agent --publish-token $SEMGREP_APP_TOKEN --publish-deployment $SEMGREP_DEPLOYMENT_ID'
+        sh '''
+          echo $SEMGREP_REPO_URL;
+          echo $SEMGREP_BRANCH; 
+          echo $SEMGREP_JOB_URL;
+          echo $SEMGREP_REPO_NAME; 
+          python -m semgrep_agent --publish-token $SEMGREP_APP_TOKEN --publish-deployment $SEMGREP_DEPLOYMENT_ID
+        '''
       }
    }
   }
