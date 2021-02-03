@@ -16,6 +16,7 @@ def foo():
     z == z
     a == a
     b == b
+    c == c
 
 
 def norm(s):
