@@ -15,17 +15,17 @@ pipeline {
     SEMGREP_REPO_URL = scm.getUserRemoteConfigs()[0].getUrl()
   }
 
-  stages {
-    stage('Prepare'){
-      steps{
-        echo scm.getUserRemoteConfigs()[0].getUrl()
-        echo scm.GIT_BRANCH
-      }
-    }
+  // stages {
+  //   stage('Prepare'){
+  //     steps{
+  //       echo scm.getUserRemoteConfigs()[0].getUrl()
+  //       echo scm.GIT_BRANCH
+  //     }
+  //   }
 
     stage('Semgrep_agent') {
       steps {
-        echo $SEMGREP_BRANCH
+        echo $SEMGREP_REPO_URL
         sh 'python -m semgrep_agent --publish-token $SEMGREP_APP_TOKEN --publish-deployment $SEMGREP_DEPLOYMENT_ID'
      }
    }
