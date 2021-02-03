@@ -17,9 +17,6 @@ pipeline {
       steps {
         sh 'python -m semgrep_agent --publish-token $SEMGREP_APP_TOKEN --publish-deployment $SEMGREP_DEPLOYMENT_ID'
      }
-   }'
-      }
-    }
-
+   }
   }
 }
