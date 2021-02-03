@@ -30,7 +30,7 @@ pipeline {
 
     stage('Semgrep_agent') {
       steps{
-        sh 'echo scm.GIT_BRANCH; python -m semgrep_agent --publish-token $SEMGREP_APP_TOKEN --publish-deployment $SEMGREP_DEPLOYMENT_ID'
+        sh 'echo ${GIT_BRANCH}; python -m semgrep_agent --publish-token $SEMGREP_APP_TOKEN --publish-deployment $SEMGREP_DEPLOYMENT_ID'
       }
    }
   }
