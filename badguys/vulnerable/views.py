@@ -10,18 +10,8 @@ from django.views.decorators.csrf import csrf_exempt
 
 # 01 - Injection Attacks
 
-def foo():
-    x == x
-    y == y
-    z == z
+def foo1():
     a == a
-    b == b
-    c == c
-    d == d
-    e == e
-    f == f
-    g == g
-    h == h
 
 
 def norm(s):

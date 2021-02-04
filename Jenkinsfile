@@ -28,7 +28,7 @@ pipeline {
     SEMGREP_JOB_URL = 'daghan/lets-be-bad-guys'
     // // https://stackoverflow.com/a/55500013/459909
     SEMGREP_REPO_NAME = env.GIT_URL.replaceFirst(/^.*\/([^\/]+?).git$/, '$1')
-    WORKSPACE = 'lets-be-bad-guys'
+    SEMGREP_REPO_NAME = 'daghan/lets-be-bad-guys'
   }
 
   stages {
