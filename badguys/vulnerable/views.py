@@ -16,6 +16,7 @@ def foo1():
     boo = boo
     "alice" is "bob"
     1234 == 1234
+    12345 == 12345
 
 
 def norm(s):
