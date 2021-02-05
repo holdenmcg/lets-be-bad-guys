@@ -13,6 +13,7 @@ from django.views.decorators.csrf import csrf_exempt
 def foo1():
     a == a
     b == b
+    boo = boo
     "alice" is "bob"
 
 
