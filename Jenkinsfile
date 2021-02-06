@@ -1,6 +1,9 @@
 pipeline {
   agent {
     docker {
+      // Make sure you have the latest semgrep-agent
+      // This file is tested with semgrep 0.39.1 on Python 3.9.1
+      // For the latest agent, use 'docker pull returntocorp/semgrep-agent:v1'
       image 'returntocorp/semgrep-agent:v1'
       args '-u root'
     }
