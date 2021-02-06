@@ -10,16 +10,6 @@ from django.views.decorators.csrf import csrf_exempt
 
 # 01 - Injection Attacks
 
-def foo1():
-    a == a
-    b == b
-    boo = boo
-    "alice" is "bob"
-    1234 == 1234
-    12345 == 12345
-    123 == 123
-
-
 def norm(s):
     return s.strip().replace(" ", "").lower()
 
