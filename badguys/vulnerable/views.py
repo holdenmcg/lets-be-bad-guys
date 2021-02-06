@@ -88,8 +88,6 @@ def code_execution(request):
 
 
 # 03 - XSS
-def foo_bar():
-    a == a
 
 
 def xss_form(request):
