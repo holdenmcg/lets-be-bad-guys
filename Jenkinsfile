@@ -1,6 +1,9 @@
 pipeline {
   agent {
     docker {
+      // Make sure you have the latest semgrep-agent
+      // This file is tested with semgrep 0.39.1 on Python 3.9.1
+      // For the latest agent, use 'docker pull returntocorp/semgrep-agent:v1'
       image 'returntocorp/semgrep-agent:v1'
       args '-u root'
     }
@@ -10,12 +13,14 @@ pipeline {
     // secrets for Semgrep org ID and auth token
     SEMGREP_APP_TOKEN     = credentials('SEMGREP_APP_TOKEN')
     SEMGREP_DEPLOYMENT_ID = credentials('SEMGREP_DEPLOYMENT_ID')
+
     // environment variables for semgrep_agent (for findings / analytics page)
-    SEMGREP_REPO_URL = "${GIT_URL}"
+    // remove .git at the end
+    SEMGREP_REPO_URL = env.GIT_URL.replaceFirst(/^(.*).git$/,'$1')
     SEMGREP_BRANCH = "${GIT_BRANCH}"
     SEMGREP_JOB_URL = "${BUILD_URL}"
-    // https://stackoverflow.com/a/55500013/459909
-    SEMGREP_REPO_NAME = env.GIT_URL.replaceFirst(/^.*\/([^\/]+?).git$/, '$1')
+    // remove SCM URL + .git at the end
+    SEMGREP_REPO_NAME = env.GIT_URL.replaceFirst(/^https:\/\/github.com\/(.*).git$/, '$1')
   }
 
   stages {
