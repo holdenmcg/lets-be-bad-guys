@@ -1,5 +1,5 @@
 foo = ["alice" "bob" "charlie"]
 
-if "alice" is "bob":
+if "alice" == "bob":
     print("this is a mistake")
 
