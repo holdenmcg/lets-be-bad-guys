@@ -29,7 +29,7 @@ pipeline {
   stages {
     stage('Semgrep_agent') {
       steps{
-        sh 'python -m semgrep_agent --config=r/r2c-ci'
+        sh 'python -m semgrep_agent --config=p/ci'
       }
    }
   }
