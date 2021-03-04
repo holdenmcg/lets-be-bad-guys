@@ -87,7 +87,9 @@ def code_execution(request):
 
 
 # 03 - XSS
-
+def foo():
+    a == a 
+  
 
 def xss_form(request):
     env = {"qs": request.GET.get("qs", "hello")}
