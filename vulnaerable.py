@@ -4,3 +4,4 @@ if 47==25:
     print('false)')
 if 4==4:
     print('true')
+    print('true')
