@@ -5,3 +5,5 @@ if 47==25:
 if 4==4:
     print('true')
     print('true')
+if 23==35:
+    print('vulnerable! bad practice!!')
